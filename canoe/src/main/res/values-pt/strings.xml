@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_error">Ocorreu um erro ao efetuar a operação</string>
+    <string name="previous_days">Dias anteriores</string>
+    <string name="today">Hoje</string>
+    <string name="tomorrow">Amanhã</string>
+    <string name="pattern_month_day_short">dd \'de\' MMM</string>
+    <string name="pattern_month_day_long">dd \'de\' MMMM</string>
+    <string name="delete">Deletar</string>
+    <string name="save">Salvar</string>
+    <string name="next_days">Próximos dias</string>
+    <string name="cancel">Cancelar</string>
+    <string name="default_string">---</string>
+    <string name="error_list">Ocorreu um erro ao carregar a lista</string>
+    <string name="not_repeat">Não repetir</string>
+    <string name="every_second">Todos os segundos</string>
+    <string name="every_minute">Todos os minutos</string>
+    <string name="every_hour">Todas as horas</string>
+    <string name="every_day">Todos os dias</string>
+    <string name="every_week">Todas as semanas</string>
+    <string name="every_month">Todos os meses</string>
+    <string name="every_year">Todos os anos</string>
+    <string name="custom">Customizado</string>
+    <string name="no_records_found">Nenhum registro encontrado</string>
+</resources>
