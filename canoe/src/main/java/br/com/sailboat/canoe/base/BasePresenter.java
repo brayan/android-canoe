@@ -8,6 +8,7 @@ import android.support.annotation.StringRes;
 import java.text.ParseException;
 import java.util.Calendar;
 
+import br.com.sailboat.canoe.helper.AsyncHelper;
 import br.com.sailboat.canoe.helper.DateHelper;
 import br.com.sailboat.canoe.helper.DecimalHelper;
 import br.com.sailboat.canoe.helper.LogHelper;
@@ -89,6 +90,30 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         } else {
             return "";
         }
+    }
+
+    protected void executeAsyncWithProgress(final AsyncHelper.Callback callback) {
+        showProgress();
+        AsyncHelper.execute(new AsyncHelper.Callback() {
+
+            @Override
+            public void doInBackground() throws Exception {
+                callback.doInBackground();
+            }
+
+            @Override
+            public void onSuccess() {
+                dismissProgress();
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onFail(Exception e) {
+                dismissProgress();
+                callback.onFail(e);
+            }
+
+        });
     }
 
     protected Context getContext() {

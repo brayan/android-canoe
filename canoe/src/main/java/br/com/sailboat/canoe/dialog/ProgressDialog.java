@@ -22,15 +22,11 @@ public class ProgressDialog extends BaseDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View view = inflarDialog();
-        return construirDialog(view);
+        View view = View.inflate(getActivity(), R.layout.dlg_progress, null);
+        return buildDialog(view);
     }
 
-    private View inflarDialog() {
-        return View.inflate(getActivity(), R.layout.dlg_progress, null);
-    }
-
-    private Dialog construirDialog(View view) {
+    private Dialog buildDialog(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
 

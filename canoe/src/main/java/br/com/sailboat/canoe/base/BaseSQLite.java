@@ -2,6 +2,7 @@ package br.com.sailboat.canoe.base;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
@@ -21,7 +22,7 @@ public abstract class BaseSQLite {
 
     public abstract String getCreateTableStatement();
 
-    protected long insert(SQLiteStatement statement) {
+    protected long insert(SQLiteStatement statement) throws SQLiteException {
         try {
             getWritableDatabase().beginTransactionNonExclusive();
             long id = statement.executeInsert();
@@ -34,15 +35,15 @@ public abstract class BaseSQLite {
         }
     }
 
-    protected void update(SQLiteStatement statement) {
+    protected void update(SQLiteStatement statement) throws SQLiteException {
         executeUpdateOrDelete(statement);
     }
 
-    protected void delete(SQLiteStatement statement) {
+    protected void delete(SQLiteStatement statement) throws SQLiteException {
         executeUpdateOrDelete(statement);
     }
 
-    private void executeUpdateOrDelete(SQLiteStatement statement) {
+    private void executeUpdateOrDelete(SQLiteStatement statement) throws SQLiteException {
         try {
             getWritableDatabase().beginTransactionNonExclusive();
             statement.executeUpdateDelete();
@@ -53,7 +54,7 @@ public abstract class BaseSQLite {
         }
     }
 
-    protected int getCountFromQuery(String query) throws Exception {
+    protected int getCountFromQuery(String query) throws SQLiteException {
         Cursor cursor = performQuery(query);
         int count = cursor.getCount();
         cursor.close();
