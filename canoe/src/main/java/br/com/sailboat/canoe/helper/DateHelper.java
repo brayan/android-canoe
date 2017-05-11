@@ -22,6 +22,11 @@ public class DateHelper {
         return calendar;
     }
 
+    public static String parseStringWithDatabaseFormatToSimpleDate(Context ctx, String date) throws ParseException {
+        Calendar calendar = parseStringWithDatabaseFormatToCalendar(date);
+        return getShortDate(ctx, calendar);
+    }
+
     public static String parseCalendarWithDatabaseFormatToString(Calendar calendar) {
         return new SimpleDateFormat(DATABASE_DATE_TIME_FORMAT).format(calendar.getTime());
     }
