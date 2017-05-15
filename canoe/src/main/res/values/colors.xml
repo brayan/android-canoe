@@ -4,4 +4,6 @@
     <color name="secondary_text">#757575</color>
     <color name="default_background">#fff3f3f3</color>
     <color name="divider_color">#12000000</color>
+    <color name="default_date">#9E9E9E</color>
+
 </resources>

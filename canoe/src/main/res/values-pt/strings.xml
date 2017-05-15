@@ -4,6 +4,7 @@
     <string name="previous_days">Dias anteriores</string>
     <string name="today">Hoje</string>
     <string name="tomorrow">Amanhã</string>
+    <string name="yesterday">Ontem</string>
     <string name="pattern_month_day_short">dd \'de\' MMM</string>
     <string name="pattern_month_day_long">dd \'de\' MMMM</string>
     <string name="delete">Deletar</string>
@@ -22,4 +23,6 @@
     <string name="every_year">Todos os anos</string>
     <string name="custom">Customizado</string>
     <string name="no_records_found">Nenhum registro encontrado</string>
+    <string name="notes">Anotações</string>
+    <string name="history">Histórico</string>
 </resources>

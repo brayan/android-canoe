@@ -14,7 +14,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?colorAccent</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">@dimen/text_size_xxsmall</item>
         <item name="android:textAllCaps">true</item>
     </style>
 

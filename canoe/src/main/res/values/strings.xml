@@ -21,5 +21,8 @@
     <string name="every_year">Every year</string>
     <string name="custom">Custom</string>
     <string name="no_records_found">no records found</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="notes">Notes</string>
+    <string name="history">History</string>
 
 </resources>
