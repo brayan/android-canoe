@@ -25,4 +25,8 @@
     <string name="no_records_found">Nenhum registro encontrado</string>
     <string name="notes">Anotações</string>
     <string name="history">Histórico</string>
+    <string name="about">Sobre</string>
+    <string name="info">Informações</string>
+    <string name="developed_by">Desenvolvido por</string>
+    <string name="version">Versão</string>
 </resources>

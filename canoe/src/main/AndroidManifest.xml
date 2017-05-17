@@ -6,6 +6,8 @@
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true">
 
+        <activity android:name=".view.info.InfoActivity" />
+
     </application>
 
 </manifest>

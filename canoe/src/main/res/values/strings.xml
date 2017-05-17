@@ -24,5 +24,9 @@
     <string name="yesterday">Yesterday</string>
     <string name="notes">Notes</string>
     <string name="history">History</string>
+    <string name="about">About</string>
+    <string name="info">Info</string>
+    <string name="developed_by">Developed by</string>
+    <string name="version">Version</string>
 
 </resources>
