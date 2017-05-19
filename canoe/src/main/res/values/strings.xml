@@ -28,5 +28,8 @@
     <string name="info">Info</string>
     <string name="developed_by">Developed by</string>
     <string name="version">Version</string>
-
+    <string name="items">items</string>
+    <string name="item">item</string>
+    <string name="no_items_selected">No items selected</string>
+    <string name="search">Search</string>
 </resources>

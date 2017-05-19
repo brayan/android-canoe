@@ -116,6 +116,9 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         });
     }
 
+    protected void onQueryTextChange() {
+    }
+
     protected Context getContext() {
         return view.getContext();
     }
@@ -203,6 +206,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void printLogAndShowDialog(Exception e);
         void showProgress();
         void dismissProgress();
+        String getSearchText();
     }
 
 

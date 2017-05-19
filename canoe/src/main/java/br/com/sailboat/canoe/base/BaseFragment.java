@@ -5,11 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import br.com.sailboat.canoe.R;
 import br.com.sailboat.canoe.dialog.ErrorDialog;
 import br.com.sailboat.canoe.dialog.MessageDialog;
 import br.com.sailboat.canoe.dialog.ProgressDialog;
@@ -20,8 +29,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     private T presenter;
     private ProgressDialog progressDialog;
+    private boolean showingSearchView;
+    private String searchText = "";
 
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
@@ -65,6 +75,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
         postActivityResult(requestCode, data);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        initSearchViewMenu(menu);
     }
 
     @Override
@@ -153,6 +168,73 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
     }
 
+    private void initSearchViewMenu(Menu menu) {
+        MenuItem menuSearchView = menu.findItem(R.id.menu_search);
+
+        if (menuSearchView != null) {
+            SearchView searchView = (SearchView) menuSearchView.getActionView();
+            initListenerSearchView(searchView);
+            updateSearchView(searchView, menuSearchView);
+        }
+    }
+
+    private void initListenerSearchView(final SearchView searchView) {
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setShowingSearchView(false);
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                setShowingSearchView(false);
+                return false;
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            private Timer timer = new Timer();
+            private final long DELAY = 500;
+
+            @Override
+            public boolean onQueryTextChange(final String text) {
+                timer.cancel();
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        setSearchText(text);
+                        getPresenter().onQueryTextChange();
+                    }
+                }, DELAY);
+
+                return true;
+
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String texto) {
+                return true;
+            }
+        });
+    }
+
+    private void updateSearchView(SearchView searchView, MenuItem menuSearchView) {
+
+        if (isShowingSearchView()) {
+            MenuItemCompat.expandActionView(menuSearchView);
+            searchView.setQuery(searchText, true);
+            searchView.clearFocus();
+            searchView.setFocusable(true);
+            searchView.setIconified(false);
+            searchView.requestFocusFromTouch();
+        }
+
+    }
+
     public T getPresenter() {
         return presenter;
     }
@@ -175,5 +257,23 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected void postActivityResult(int requestCode, Intent data) {
     }
+
+    public boolean isShowingSearchView() {
+        return showingSearchView;
+    }
+
+    public void setShowingSearchView(boolean showingSearchView) {
+        this.showingSearchView = showingSearchView;
+    }
+
+    @Override
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+
 
 }

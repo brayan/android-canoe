@@ -29,4 +29,8 @@
     <string name="info">Informações</string>
     <string name="developed_by">Desenvolvido por</string>
     <string name="version">Versão</string>
+    <string name="items">itens</string>
+    <string name="item">item</string>
+    <string name="no_items_selected">Nenhum item selecionado</string>
+    <string name="search">Pesquisar</string>
 </resources>
