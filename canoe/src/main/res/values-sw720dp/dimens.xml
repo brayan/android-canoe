@@ -2,7 +2,7 @@
 <resources>
 
     <!--ViewHolder-->
-    <dimen name="text_size_xxsmall">16sp</dimen>
+    <dimen name="text_size_xxsmall">15sp</dimen>
     <dimen name="text_size_xsmall">18sp</dimen>
     <dimen name="text_size_small">20sp</dimen>
     <dimen name="text_size_medium">22sp</dimen>
