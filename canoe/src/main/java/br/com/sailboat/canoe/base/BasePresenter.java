@@ -17,7 +17,7 @@ import br.com.sailboat.canoe.helper.StringHelper;
 public abstract class BasePresenter<T extends BasePresenter.View> {
 
     private boolean firstSession = true;
-    private T view;
+    protected T view;
 
     public BasePresenter(T view) {
         this.view = view;
@@ -116,7 +116,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         });
     }
 
-    protected void onQueryTextChange() {
+    protected void onQueryTextChange(String text) {
     }
 
     protected Context getContext() {
@@ -178,10 +178,6 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
     public void restoreViewModel(Bundle savedInstanceState) {
     }
 
-    @Deprecated
-    public void extractExtrasFromIntent(Intent intent) {
-    }
-
     public void extractExtrasFromArguments(Bundle arguments) {
     }
 
@@ -208,6 +204,5 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void dismissProgress();
         String getSearchText();
     }
-
 
 }

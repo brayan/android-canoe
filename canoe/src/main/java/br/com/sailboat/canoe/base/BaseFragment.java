@@ -27,7 +27,7 @@ import br.com.sailboat.canoe.helper.UIHelper;
 
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BasePresenter.View {
 
-    private T presenter;
+    protected T presenter;
     private ProgressDialog progressDialog;
     private boolean showingSearchView;
     private String searchText = "";
@@ -38,7 +38,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         setHasOptionsMenu(true);
         setPresenter(newPresenterInstance());
         restoreViewModel(savedInstanceState);
-        extractExtrasFromIntent(getActivity().getIntent());
         extractExtrasFromArguments();
     }
 
@@ -138,7 +137,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     public void showProgress() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog();
-            progressDialog.show(getFragmentManager(), "DIALOG_PROGRESS");
+            progressDialog.show(getFragmentManager(), ProgressDialog.class.getName());
         }
     }
 
@@ -153,12 +152,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     private void restoreViewModel(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             getPresenter().restoreViewModel(savedInstanceState);
-        }
-    }
-
-    private void extractExtrasFromIntent(Intent intent) {
-        if (intent != null) {
-            getPresenter().extractExtrasFromIntent(intent);
         }
     }
 
@@ -207,7 +200,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
                     @Override
                     public void run() {
                         setSearchText(text);
-                        getPresenter().onQueryTextChange();
+                        getPresenter().onQueryTextChange(text);
                     }
                 }, DELAY);
 
@@ -243,9 +236,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         this.presenter = presenter;
     }
 
-    protected abstract T newPresenterInstance();
-
     protected abstract int getLayoutId();
+
+    protected abstract T newPresenterInstance();
 
     protected abstract void initViews(View view);
 
