@@ -20,7 +20,7 @@
         android:layout_marginLeft="16dp"
         android:paddingRight="16dp"
         android:textColor="@color/md_blue_grey_400"
-        android:textSize="@dimen/text_size_medium"
+        android:textSize="@dimen/text_size_small"
         tools:text="Value"/>
 
 </LinearLayout>
