@@ -2,7 +2,6 @@ package br.com.sailboat.canoe.recycler;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
 
@@ -27,7 +26,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
         visibleItemCount = recyclerView.getChildCount();
         totalItemCount = manager.getItemCount();
 
-        Log.e("RECYCLER", "onScrolled() visibleItemCount: " + visibleItemCount + ", totalItemCount: " + totalItemCount + ", firstVisibleItem: " + firstVisibleItem);
+//        Log.e("RECYCLER", "onScrolled() visibleItemCount: " + visibleItemCount + ", totalItemCount: " + totalItemCount + ", firstVisibleItem: " + firstVisibleItem);
 
         // TOTAL EXERCISES: 1000
         // TOTAL ITEM COUNT: 100
