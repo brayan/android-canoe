@@ -6,13 +6,14 @@ import br.com.sailboat.canoe.helper.DateHelper;
 
 public class AlarmHelper {
 
-    public static void incrementToNextValidDate(Calendar calendar, int repeatType) {
+    public static void incrementToNextValidDate(
+            Calendar calendar, int repeatType, String days) {
         do {
-            incrementToNext(calendar, repeatType);
+            incrementToNext(calendar, repeatType, days);
         } while (DateHelper.isBeforeNow(calendar));
     }
 
-    public static void incrementToNext(Calendar calendar, int repeatType) {
+    public static void incrementToNext(Calendar calendar, int repeatType, String days) {
         switch (repeatType) {
             case RepeatType.SECOND: {
                 calendar.add(Calendar.SECOND, 1);
@@ -42,7 +43,20 @@ public class AlarmHelper {
                 calendar.add(Calendar.YEAR, 1);
                 return;
             }
+            case RepeatType.CUSTOM: {
+                incrementToNextCustomAlarm(calendar, days);
+                return;
+            }
         }
+    }
+
+    private static void incrementToNextCustomAlarm(Calendar calendar, String days) {
+        String currentDayOfWeek = null;
+        do {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            currentDayOfWeek = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
+
+        } while (!days.contains(currentDayOfWeek));
     }
 
 }
