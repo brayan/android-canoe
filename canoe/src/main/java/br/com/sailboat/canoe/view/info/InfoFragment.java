@@ -40,9 +40,9 @@ public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPre
     }
 
     @Override
-    protected void initViews(View view) {
-        initToolbar(view);
-        initRecyclerView(view);
+    protected void initViews() {
+        initToolbar();
+        initRecyclerView();
     }
 
     @Override
@@ -50,8 +50,8 @@ public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPre
         recycler.getAdapter().notifyDataSetChanged();
     }
 
-    private void initToolbar(View view) {
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+    private void initToolbar() {
+        toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
         AppCompatActivity appCompatActivity = ((AppCompatActivity) getActivity());
         appCompatActivity.setSupportActionBar(toolbar);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,8 +64,8 @@ public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPre
         toolbar.setTitle(R.string.info);
     }
 
-    private void initRecyclerView(View view) {
-        recycler = (RecyclerView) view.findViewById(R.id.recycler);
+    private void initRecyclerView() {
+        recycler = (RecyclerView) getView().findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler.setAdapter(new InfoAdapter(getPresenter()));
     }

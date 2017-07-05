@@ -49,7 +49,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        initViews(view);
+        initViews();
     }
 
     @Override
@@ -240,7 +240,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected abstract T newPresenterInstance();
 
-    protected abstract void initViews(View view);
+    protected abstract void initViews();
 
     protected void onActivityResultOk(int requestCode, Intent data) {
     }
