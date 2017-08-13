@@ -11,4 +11,5 @@
     app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/Theme.AppCompat.Light"
     app:title="Title"
+    app:subtitleTextAppearance="@style/ToolbarSubtitle"
     app:titleTextAppearance="@style/ToolbarTitle" />

@@ -9,6 +9,11 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="ToolbarSubtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">@dimen/text_size_xxsmall</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextViewLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

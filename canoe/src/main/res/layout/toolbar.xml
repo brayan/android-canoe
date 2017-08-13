@@ -10,4 +10,5 @@
     android:textSize="20sp"
     app:popupTheme="@style/Theme.AppCompat.Light"
     app:title="Title"
+    app:subtitleTextAppearance="@style/ToolbarSubtitle"
     app:titleTextAppearance="@style/ToolbarTitle" />

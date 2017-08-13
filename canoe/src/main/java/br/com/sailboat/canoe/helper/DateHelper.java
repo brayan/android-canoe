@@ -106,6 +106,11 @@ public class DateHelper {
         }
     }
 
+    public static boolean isYesterday(Calendar calendar) {
+        return calendar.after(getFinalCalendarForBeforeYesterday())
+                && calendar.before(getInitialCalendarForToday());
+    }
+
     public static boolean isToday(Calendar calendar) {
         return calendar.after(getFinalCalendarForYesterday())
                 && calendar.before(getInitialCalendarForTomorrow());
@@ -120,8 +125,20 @@ public class DateHelper {
         return calendar.after(getFinalCalendarForTomorrow());
     }
 
+    public static boolean isAfterToday(Calendar calendar) {
+        return calendar.after(getFinalCalendarForToday());
+    }
+
+    public static boolean isAfterYesterday(Calendar calendar) {
+        return calendar.after(getFinalCalendarForYesterday());
+    }
+
     public static boolean isBeforeToday(Calendar calendar) {
         return calendar.before(getInitialCalendarForToday());
+    }
+
+    public static boolean isBeforeYesterday(Calendar calendar) {
+        return calendar.before(getInitialCalendarForYesterday());
     }
 
     public static boolean isBeforeNow(Calendar calendar) {
@@ -159,26 +176,27 @@ public class DateHelper {
 
     public static Calendar getInitialCalendarForToday() {
         Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.SECOND, 0);
-        today.set(Calendar.MILLISECOND, 0);
+        setInitialTimeToCalendar(today);
 
         return today;
     }
 
     public static Calendar getFinalCalendarForToday() {
         Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 23);
-        today.set(Calendar.MINUTE, 59);
-        today.set(Calendar.SECOND, 59);
-        today.set(Calendar.MILLISECOND, 0);
+        setFinalTimeToCalendar(today);
 
         return today;
     }
 
     public static Calendar getFinalCalendarForYesterday() {
         Calendar yesterday = getFinalCalendarForToday();
+        yesterday.add(Calendar.DAY_OF_MONTH, -1);
+
+        return yesterday;
+    }
+
+    public static Calendar getFinalCalendarForBeforeYesterday() {
+        Calendar yesterday = getFinalCalendarForYesterday();
         yesterday.add(Calendar.DAY_OF_MONTH, -1);
 
         return yesterday;
@@ -211,5 +229,20 @@ public class DateHelper {
 
         return yesterday;
     }
+
+    public static void setInitialTimeToCalendar(Calendar calendar) {
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+    }
+
+    public static void setFinalTimeToCalendar(Calendar calendar) {
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 0);
+    }
+
 
 }
