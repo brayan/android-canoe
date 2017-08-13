@@ -32,4 +32,8 @@
     <string name="item">item</string>
     <string name="no_items_selected">No items selected</string>
     <string name="search">Search</string>
+    <string name="initial_date">Initial Date</string>
+    <string name="final_date">Final Date</string>
+    <string name="filter_by_date">Filter by date</string>
+    <string name="filter">Filter</string>
 </resources>
