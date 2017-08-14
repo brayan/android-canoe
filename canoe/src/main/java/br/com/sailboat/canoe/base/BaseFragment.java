@@ -29,8 +29,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected T presenter;
     private ProgressDialog progressDialog;
-    private boolean showingSearchView;
-    private String searchText = "";
+    private boolean showingSearchView = true;
+    private boolean searchViewOpen;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +149,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
     }
 
+    @Override
+    public void updateMenus() {
+        getActivity().invalidateOptionsMenu();
+    }
+
     private void restoreViewModel(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             getPresenter().restoreViewModel(savedInstanceState);
@@ -175,14 +180,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setShowingSearchView(false);
+                setSearchViewOpen(true);
             }
         });
 
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                setShowingSearchView(false);
+                setSearchViewOpen(false);
                 return false;
             }
         });
@@ -199,8 +204,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        setSearchText(text);
-                        getPresenter().onQueryTextChange(text);
+                        presenter.setSearchText(text);
+                        getPresenter().onQueryTextChange();
                     }
                 }, DELAY);
 
@@ -217,9 +222,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     private void updateSearchView(SearchView searchView, MenuItem menuSearchView) {
 
-        if (isShowingSearchView()) {
+        menuSearchView.setVisible(isShowingSearchView());
+
+        if (isSearchViewOpen()) {
             MenuItemCompat.expandActionView(menuSearchView);
-            searchView.setQuery(searchText, true);
+            searchView.setQuery(presenter.getSearchText(), true);
             searchView.clearFocus();
             searchView.setFocusable(true);
             searchView.setIconified(false);
@@ -251,22 +258,21 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected void postActivityResult(int requestCode, Intent data) {
     }
 
+    @Override
     public boolean isShowingSearchView() {
         return showingSearchView;
     }
 
+    @Override
     public void setShowingSearchView(boolean showingSearchView) {
         this.showingSearchView = showingSearchView;
     }
 
-    @Override
-    public String getSearchText() {
-        return searchText;
+    public boolean isSearchViewOpen() {
+        return searchViewOpen;
     }
 
-    public void setSearchText(String searchText) {
-        this.searchText = searchText;
+    public void setSearchViewOpen(boolean searchViewOpen) {
+        this.searchViewOpen = searchViewOpen;
     }
-
-
 }

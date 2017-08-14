@@ -18,6 +18,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
 
     private boolean firstSession = true;
     protected T view;
+    private String searchText;
 
     public BasePresenter(T view) {
         this.view = view;
@@ -116,7 +117,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         });
     }
 
-    protected void onQueryTextChange(String text) {
+    protected void onQueryTextChange() {
     }
 
     protected Context getContext() {
@@ -155,6 +156,17 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         getView().dismissProgress();
     }
 
+    protected void hideSearchView() {
+        view.setShowingSearchView(false);
+        view.updateMenus();
+    }
+
+    protected void showSearchView() {
+        view.setShowingSearchView(true);
+        view.updateMenus();
+    }
+
+
     public T getView() {
         return view;
     }
@@ -189,6 +201,14 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         this.firstSession = firstSession;
     }
 
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+
 
     public interface View {
         Context getContext();
@@ -202,7 +222,10 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void printLogAndShowDialog(Exception e);
         void showProgress();
         void dismissProgress();
-        String getSearchText();
+        void setShowingSearchView(boolean show);
+        boolean isShowingSearchView();
+        void updateMenus();
     }
+
 
 }
