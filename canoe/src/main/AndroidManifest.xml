@@ -8,6 +8,8 @@
 
         <activity android:name=".view.info.InfoActivity" />
 
+        <activity android:name=".view.template.TemplateListActivity" />
+
     </application>
 
 </manifest>

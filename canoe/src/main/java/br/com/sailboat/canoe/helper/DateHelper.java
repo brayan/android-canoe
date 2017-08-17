@@ -116,6 +116,10 @@ public class DateHelper {
                 && calendar.before(getInitialCalendarForTomorrow());
     }
 
+    public static boolean isNotToday(Calendar calendar) {
+        return !isToday(calendar);
+    }
+
     public static boolean isTomorrow(Calendar calendar) {
         return calendar.after(getFinalCalendarForToday())
                 && calendar.before(getInitialCalendarForAfterTomorrow());

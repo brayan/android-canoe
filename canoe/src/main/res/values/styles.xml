@@ -1,5 +1,12 @@
 <resources>
 
+    <style name="AppThemeParent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="toolbarStyle">@style/toolbar</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@android:color/white</item>
@@ -21,6 +28,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_size_xxsmall</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
 
