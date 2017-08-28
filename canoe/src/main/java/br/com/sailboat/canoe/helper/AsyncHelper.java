@@ -2,12 +2,22 @@ package br.com.sailboat.canoe.helper;
 
 import android.os.AsyncTask;
 
+import java.util.concurrent.Executor;
+
 public class AsyncHelper extends AsyncTask<Void, Void, Exception> {
 
     private AsyncHelper.Callback callback;
 
-    public static void execute(AsyncHelper.Callback callback) {
-        new AsyncHelper(callback).execute();
+    public static AsyncTask execute(Executor executor, AsyncHelper.Callback callback) {
+        if (executor != null) {
+            return new AsyncHelper(callback).executeOnExecutor(executor);
+        } else {
+            return execute(callback);
+        }
+    }
+
+    public static AsyncTask execute(AsyncHelper.Callback callback) {
+        return new AsyncHelper(callback).execute();
     }
 
     private AsyncHelper(AsyncHelper.Callback callback) {
