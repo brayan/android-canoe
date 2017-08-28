@@ -18,4 +18,8 @@ public class RecyclerHelper {
         manager.scrollToPositionWithOffset(position, (point.y / 4));
     }
 
+    public static void scrollToTop(LinearLayoutManager manager) {
+        manager.scrollToPositionWithOffset(0, 0);
+    }
+
 }

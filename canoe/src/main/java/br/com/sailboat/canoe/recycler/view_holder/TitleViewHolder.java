@@ -1,5 +1,6 @@
 package br.com.sailboat.canoe.recycler.view_holder;
 
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,6 +27,14 @@ public class TitleViewHolder extends BaseViewHolder {
 
     public void bindItem(TitleRecyclerItem title) {
         tvName.setText(title.getTitle());
+
+        if (hasColor(title)) {
+            tvName.setTextColor(ContextCompat.getColor(itemView.getContext(), title.getColor()));
+        }
+    }
+
+    private boolean hasColor(TitleRecyclerItem title) {
+        return title.getColor() != -1;
     }
 
     private void initViews(View view) {
