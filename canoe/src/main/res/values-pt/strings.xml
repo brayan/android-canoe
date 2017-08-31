@@ -31,7 +31,7 @@
     <string name="version">Versão</string>
     <string name="items">itens</string>
     <string name="item">item</string>
-    <string name="no_items_selected">Nenhum item selecionado</string>
+    <string name="no_items_selected">0 itens</string>
     <string name="search">Pesquisar</string>
     <string name="initial_date">Data Inicial</string>
     <string name="final_date">Data Final</string>

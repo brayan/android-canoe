@@ -30,7 +30,7 @@
     <string name="version">Version</string>
     <string name="items">items</string>
     <string name="item">item</string>
-    <string name="no_items_selected">No items selected</string>
+    <string name="no_items_selected">0 items</string>
     <string name="search">Search</string>
     <string name="initial_date">Initial Date</string>
     <string name="final_date">Final Date</string>
