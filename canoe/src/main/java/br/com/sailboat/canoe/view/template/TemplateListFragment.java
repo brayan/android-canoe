@@ -113,7 +113,7 @@ public class TemplateListFragment extends BaseFragment<TemplateListPresenter> im
     }
 
     private void initEmptyView() {
-        emptyList = getView().findViewById(R.id.emptyList);
+        emptyList = getView().findViewById(R.id.ept_list);
     }
 
     private void initToolbar() {

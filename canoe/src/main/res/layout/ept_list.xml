@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/emptyList"
+    android:id="@+id/ept_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background"
@@ -21,17 +21,15 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imgEmptyList"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:id="@+id/ept_list__iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
-                android:background="@drawable/shape_circle"
                 android:padding="8dp"
-                android:tint="?colorPrimary"
-                app:srcCompat="@drawable/ic_format_list_bulleted_white_64dp" />
+                app:srcCompat="@drawable/empty_clouds" />
 
             <TextView
-                android:id="@+id/tvEmptyListTitle"
+                android:id="@+id/ept_list__tv__message1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -42,7 +40,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvEmptyListMessage"
+                android:id="@+id/ept_list__tv__message2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
