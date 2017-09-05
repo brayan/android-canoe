@@ -225,6 +225,8 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void setShowingSearchView(boolean show);
         boolean isShowingSearchView();
         void updateMenus();
+        void showEmptyView();
+        void hideEmptyView();
     }
 
 

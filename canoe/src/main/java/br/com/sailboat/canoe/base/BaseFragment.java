@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Timer;
@@ -23,6 +24,7 @@ import br.com.sailboat.canoe.dialog.ErrorDialog;
 import br.com.sailboat.canoe.dialog.MessageDialog;
 import br.com.sailboat.canoe.dialog.ProgressDialog;
 import br.com.sailboat.canoe.helper.LogHelper;
+import br.com.sailboat.canoe.helper.StringHelper;
 import br.com.sailboat.canoe.helper.UIHelper;
 
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BasePresenter.View {
@@ -31,6 +33,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     private ProgressDialog progressDialog;
     private boolean showingSearchView = true;
     private boolean searchViewOpen;
+    private View emptyView;
+    private String emptyViewMessage1;
+    private String emptyViewMessage2;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         setPresenter(newPresenterInstance());
         restoreViewModel(savedInstanceState);
         extractExtrasFromArguments();
+        initEmptyViewMessages();
     }
 
     @Nullable
@@ -49,6 +55,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        initEmptyView();
         initViews();
     }
 
@@ -150,6 +157,20 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Override
+    public void showEmptyView() {
+        if (emptyView != null) {
+            emptyView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void hideEmptyView() {
+        if (emptyView != null) {
+            emptyView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void updateMenus() {
         getActivity().invalidateOptionsMenu();
     }
@@ -235,6 +256,19 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     }
 
+    private void initEmptyView() {
+        emptyView = getView().findViewById(R.id.ept_view);
+
+        if (emptyView != null && StringHelper.isNotEmpty(getEmptyViewMessage1())) {
+            ((TextView) emptyView.findViewById(R.id.ept_view__tv__message1)).setText(getEmptyViewMessage1());
+        }
+
+        if (emptyView != null && StringHelper.isNotEmpty(getEmptyViewMessage2())) {
+            ((TextView) emptyView.findViewById(R.id.ept_view__tv__message2)).setText(getEmptyViewMessage2());
+        }
+
+    }
+
     public T getPresenter() {
         return presenter;
     }
@@ -248,6 +282,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected abstract T newPresenterInstance();
 
     protected abstract void initViews();
+
+    protected void initEmptyViewMessages() {
+    }
 
     protected void onActivityResultOk(int requestCode, Intent data) {
     }
@@ -274,5 +311,21 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     public void setSearchViewOpen(boolean searchViewOpen) {
         this.searchViewOpen = searchViewOpen;
+    }
+
+    public String getEmptyViewMessage1() {
+        return emptyViewMessage1;
+    }
+
+    public void setEmptyViewMessage1(String emptyViewMessage1) {
+        this.emptyViewMessage1 = emptyViewMessage1;
+    }
+
+    public String getEmptyViewMessage2() {
+        return emptyViewMessage2;
+    }
+
+    public void setEmptyViewMessage2(String emptyViewMessage2) {
+        this.emptyViewMessage2 = emptyViewMessage2;
     }
 }
