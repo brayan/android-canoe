@@ -4,9 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +39,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     private ProgressDialog progressDialog;
     private boolean showingSearchView = true;
     private boolean searchViewOpen;
-    private View emptyView;
+    protected AppBarLayout appbar;
+    protected Toolbar toolbar;
+    protected View emptyView;
+    protected RecyclerView recycler;
+    protected FloatingActionButton fab;
     private String emptyViewMessage1;
     private String emptyViewMessage2;
 
@@ -55,7 +65,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        initToolbar();
         initEmptyView();
+        initRecycler();
+        initFab();
         initViews();
     }
 
@@ -171,6 +184,16 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Override
+    public void setTitle(String title) {
+        toolbar.setTitle(title);
+    }
+
+    @Override
+    public void expandToolbar() {
+        appbar.setExpanded(true, true);
+    }
+
+    @Override
     public void updateMenus() {
         getActivity().invalidateOptionsMenu();
     }
@@ -256,6 +279,17 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     }
 
+    private void initToolbar() {
+        appbar = (AppBarLayout) getView().findViewById(R.id.appbar);
+        toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
+
+        if (toolbar != null) {
+            AppCompatActivity appCompatActivity = ((AppCompatActivity) getActivity());
+            appCompatActivity.setSupportActionBar(toolbar);
+            onInitToolbar();
+        }
+    }
+
     private void initEmptyView() {
         emptyView = getView().findViewById(R.id.ept_view);
 
@@ -267,6 +301,50 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
             ((TextView) emptyView.findViewById(R.id.ept_view__tv__message2)).setText(getEmptyViewMessage2());
         }
 
+    }
+
+    private void initRecycler() {
+        recycler = (RecyclerView) getView().findViewById(R.id.recycler);
+
+        if (recycler != null) {
+            recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+            onInitRecycler();
+        }
+    }
+
+    private void initFab() {
+        fab = (FloatingActionButton) getView().findViewById(R.id.fab);
+
+        if (fab != null) {
+            fab.setOnClickListener(new android.view.View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    presenter.onClickFab();
+                }
+            });
+
+            onInitFab();
+        }
+    }
+
+    @Override
+    public void removeItemFromRecycler(int position) {
+        recycler.getAdapter().notifyItemRemoved(position);
+    }
+
+    @Override
+    public void updateRecycler() {
+        recycler.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void hideRecycler() {
+        recycler.setVisibility(android.view.View.GONE);
+    }
+
+    @Override
+    public void showRecycler() {
+        recycler.setVisibility(android.view.View.VISIBLE);
     }
 
     public T getPresenter() {
@@ -293,6 +371,15 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     protected void postActivityResult(int requestCode, Intent data) {
+    }
+
+    protected void onInitToolbar() {
+    }
+
+    protected void onInitRecycler() {
+    }
+
+    protected void onInitFab() {
     }
 
     @Override

@@ -193,6 +193,9 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
     public void extractExtrasFromArguments(Bundle arguments) {
     }
 
+    public void onClickFab() {
+    }
+
     public boolean isFirstSession() {
         return firstSession;
     }
@@ -227,6 +230,12 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void updateMenus();
         void showEmptyView();
         void hideEmptyView();
+        void showRecycler();
+        void hideRecycler();
+        void updateRecycler();
+        void removeItemFromRecycler(int position);
+        void expandToolbar();
+        void setTitle(String title);
     }
 
 
