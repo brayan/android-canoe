@@ -189,6 +189,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Override
+    public void setSubtitle(String subtitle) {
+        toolbar.setSubtitle(subtitle);
+    }
+
+    @Override
     public void expandToolbar() {
         appbar.setExpanded(true, true);
     }
@@ -338,6 +343,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Override
+    public void updateRecyclerItemChanged(int position) {
+        recycler.getAdapter().notifyItemChanged(position);
+    }
+
+    @Override
     public void hideRecycler() {
         recycler.setVisibility(android.view.View.GONE);
     }
@@ -359,7 +369,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected abstract T newPresenterInstance();
 
-    protected abstract void initViews();
+    protected void initViews() {
+    }
 
     protected void initEmptyViewMessages() {
     }
