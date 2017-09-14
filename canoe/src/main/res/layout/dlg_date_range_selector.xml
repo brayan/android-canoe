@@ -7,22 +7,23 @@
     android:orientation="vertical">
 
     <TextView
-        android:background="?colorPrimary"
-        android:id="@+id/dialog_repeate_alarm__tv__titulo"
+        android:id="@+id/dlg_date_range_selector__tv__title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?colorPrimary"
         android:padding="16dp"
         android:text="@string/filter"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/text_size_small"
+        android:textStyle="bold"
+        tools:background="@color/md_blue_500"/>
 
     <LinearLayout
-        android:background="?selectableItemBackground"
         android:id="@+id/dlg_date_range_selector__ll__initial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="16dp"
@@ -44,10 +45,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="?selectableItemBackground"
         android:id="@+id/dlg_date_range_selector__ll__final"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="16dp"

@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="24dp">
-
+    android:layout_height="24dp"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/diamond"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:layout_centerInParent="true"
         android:layout_gravity="end"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:tint="?colorAccent"
-        tools:tint="#000"
-        app:srcCompat="@drawable/ic_diamond_white_24dp" />
+        app:srcCompat="@drawable/ic_diamond_white_24dp"
+        tools:tint="#000"/>
 
     <View
-        tools:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="end"
         android:layout_toLeftOf="@id/diamond"
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="end"
-        android:background="?colorAccent" />
+        android:background="?colorAccent"
+        tools:background="#000"/>
 
     <View
-        tools:background="#000"
-        android:layout_toRightOf="@id/diamond"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_centerInParent="true"
         android:layout_gravity="end"
-        android:background="?colorAccent" />
+        android:layout_toRightOf="@id/diamond"
+        android:background="?colorAccent"
+        tools:background="#000"/>
 
 </RelativeLayout>

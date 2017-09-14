@@ -38,4 +38,6 @@
     <string name="filter_by_date">Filtrar por data</string>
     <string name="filter">Filtrar</string>
     <string name="settings">Configurações</string>
+    <string name="tip">Dica</string>
+    <string name="got_it">ENTENDI</string>
 </resources>

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    android:textSize="20sp"
+    android:textSize="@dimen/text_size_large"
     app:popupTheme="@style/Theme.AppCompat.Light"
     app:subtitleTextAppearance="@style/ToolbarSubtitle"
     app:title="Title"
