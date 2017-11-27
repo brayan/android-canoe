@@ -1,4 +1,4 @@
-package br.com.sailboat.canoe.view.info;
+package br.com.sailboat.canoe.view.about;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,16 +13,16 @@ import br.com.sailboat.canoe.R;
 import br.com.sailboat.canoe.base.BaseFragment;
 import br.com.sailboat.canoe.recycler.RecyclerItem;
 
-public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPresenter.View {
+public class AboutFragment extends BaseFragment<AboutPresenter> implements AboutPresenter.View {
 
     private Toolbar toolbar;
     private RecyclerView recycler;
 
 
-    public static InfoFragment newInstance(ArrayList<RecyclerItem> recyclerItems) {
+    public static AboutFragment newInstance(ArrayList<RecyclerItem> recyclerItems) {
         Bundle args = new Bundle();
         args.putSerializable("RECYCLER_ITEMS", recyclerItems);
-        InfoFragment fragment = new InfoFragment();
+        AboutFragment fragment = new AboutFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -31,12 +31,12 @@ public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPre
 
     @Override
     protected int getLayoutId() {
-        return R.layout.frg_info;
+        return R.layout.frg_about;
     }
 
     @Override
-    protected InfoPresenter newPresenterInstance() {
-        return new InfoPresenter(this);
+    protected AboutPresenter newPresenterInstance() {
+        return new AboutPresenter(this);
     }
 
     @Override
@@ -61,13 +61,13 @@ public class InfoFragment extends BaseFragment<InfoPresenter> implements InfoPre
                 getActivity().onBackPressed();
             }
         });
-        toolbar.setTitle(R.string.info);
+        toolbar.setTitle(R.string.about);
     }
 
     private void initRecyclerView() {
         recycler = (RecyclerView) getView().findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recycler.setAdapter(new InfoAdapter(getPresenter()));
+        recycler.setAdapter(new AboutAdapter(getPresenter()));
     }
 
 

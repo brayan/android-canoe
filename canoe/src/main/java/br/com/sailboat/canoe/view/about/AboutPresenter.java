@@ -1,4 +1,4 @@
-package br.com.sailboat.canoe.view.info;
+package br.com.sailboat.canoe.view.about;
 
 import android.os.Bundle;
 
@@ -7,11 +7,11 @@ import java.util.List;
 import br.com.sailboat.canoe.base.BasePresenter;
 import br.com.sailboat.canoe.recycler.RecyclerItem;
 
-public class InfoPresenter extends BasePresenter<InfoPresenter.View> implements InfoAdapter.Callback {
+public class AboutPresenter extends BasePresenter<AboutPresenter.View> implements AboutAdapter.Callback {
 
-    private InfoViewModel viewModel = new InfoViewModel();
+    private AboutViewModel viewModel = new AboutViewModel();
 
-    public InfoPresenter(InfoPresenter.View view) {
+    public AboutPresenter(AboutPresenter.View view) {
         super(view);
     }
 

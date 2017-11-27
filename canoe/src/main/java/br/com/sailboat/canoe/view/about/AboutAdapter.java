@@ -1,4 +1,4 @@
-package br.com.sailboat.canoe.view.info;
+package br.com.sailboat.canoe.view.about;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
@@ -11,14 +11,14 @@ import br.com.sailboat.canoe.recycler.view_holder.LabelValueViewHolder;
 import br.com.sailboat.canoe.recycler.item.ImageTitleDividerRecyclerItem;
 import br.com.sailboat.canoe.recycler.item.LabelValueRecyclerItem;
 
-public class InfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AboutAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int VIEW_TYPE_IMAGE_TITLE = 0;
     public static final int VIEW_TYPE_LABEL_VALUE = 1;
 
-    private InfoAdapter.Callback callback;
+    private AboutAdapter.Callback callback;
 
-    public InfoAdapter(Callback callback) {
+    public AboutAdapter(Callback callback) {
         this.callback = callback;
     }
 

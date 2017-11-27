@@ -6,7 +6,7 @@
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true">
 
-        <activity android:name=".view.info.InfoActivity" />
+        <activity android:name=".view.about.AboutActivity" />
 
         <activity android:name=".view.template.TemplateListActivity" />
 
