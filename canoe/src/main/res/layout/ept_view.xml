@@ -39,7 +39,7 @@
                 android:padding="@dimen/abc_list_item_padding_horizontal_material"
                 android:text="@string/no_records_found"
                 android:textAllCaps="true"
-                android:textColor="?colorAccent"
+                android:textColor="?colorPrimary"
                 android:textSize="@dimen/text_size_medium"/>
 
             <TextView
@@ -50,7 +50,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:textAllCaps="true"
-                android:textColor="?colorPrimaryDark"
+                android:textColor="?colorAccent"
                 android:textSize="@dimen/text_size_small"
                 tools:text="Message"/>
 
