@@ -40,4 +40,20 @@
     <string name="settings">Configurações</string>
     <string name="tip">Dica</string>
     <string name="got_it">ENTENDI</string>
+    <string name="ept_click_to_add">Clique no botão + para adicionar</string>
+    <string name="are_you_sure">Tem certeza?</string>
+    <string name="sunday">Domingo</string>
+    <string name="monday">Segunda</string>
+    <string name="tuesday">Terça</string>
+    <string name="wednesday">Quarta</string>
+    <string name="thursday">Quinta</string>
+    <string name="friday">Sexta</string>
+    <string name="saturday">Sábado</string>
+    <string name="no_filter">Nenhum filtro</string>
+    <string name="last_7_days">Últimos 7 dias</string>
+    <string name="last_30_days">Últimos 30 dias</string>
+    <string name="date_range">Intervalo entre datas</string>
+    <string name="and">e</string>
+    <string name="none">Nenhum</string>
+    <string name="label_description">DESCRIÇÃO</string>
 </resources>

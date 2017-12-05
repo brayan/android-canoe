@@ -5,7 +5,7 @@
     <string name="tomorrow">Tomorrow</string>
     <string name="pattern_month_day_short">MMM dd</string>
     <string name="pattern_month_day_long">MMMM dd</string>
-    <string name="delete">DELETE</string>
+    <string name="delete">Delete</string>
     <string name="save">SAVE</string>
     <string name="previous_days">Previous days</string>
     <string name="next_days">Next days</string>
@@ -39,4 +39,20 @@
     <string name="settings">Settings</string>
     <string name="tip">Tip</string>
     <string name="got_it">GOT IT</string>
+    <string name="ept_click_to_add">Click the + button to add</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="no_filter">No filter</string>
+    <string name="last_7_days">Last 7 days</string>
+    <string name="last_30_days">Last 30 days</string>
+    <string name="date_range">Date range</string>
+    <string name="and">and</string>
+    <string name="none">None</string>
+    <string name="label_description">DESCRIPTION</string>
 </resources>
