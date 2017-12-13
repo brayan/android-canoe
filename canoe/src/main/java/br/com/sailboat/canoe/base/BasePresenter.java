@@ -238,6 +238,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void setTitle(String title);
         void setSubtitle(String subtitle);
         void updateRecyclerItemChanged(int position);
+
     }
 
 

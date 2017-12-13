@@ -67,8 +67,8 @@ public class InputDoubleDialog extends DialogFragment {
     private void bindCustomView(Bundle savedInstanceState, AlertDialog.Builder dialog) {
         LayoutInflater i = getActivity().getLayoutInflater();
 
-        View view = i.inflate(R.layout.dialog_text_input, null, false);
-        etDialogTextInput = (EditText) view.findViewById(R.id.tvDialogTextInput);
+        View view = i.inflate(R.layout.dlg_input_number_decimal, null, false);
+        etDialogTextInput = (EditText) view.findViewById(R.id.dlg_input_number_decimal__et__input);
 
         bindInputFilter();
 

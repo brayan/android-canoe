@@ -56,4 +56,5 @@
     <string name="and">e</string>
     <string name="none">Nenhum</string>
     <string name="label_description">DESCRIÇÃO</string>
+    <string name="menu_save">SALVAR</string>
 </resources>

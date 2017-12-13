@@ -55,4 +55,5 @@
     <string name="and">and</string>
     <string name="none">None</string>
     <string name="label_description">DESCRIPTION</string>
+    <string name="menu_save">SAVE</string>
 </resources>
