@@ -19,7 +19,7 @@ import br.com.sailboat.canoe.helper.InputFilterDecimalDigits;
 import br.com.sailboat.canoe.helper.StringHelper;
 import br.com.sailboat.canoe.helper.UIHelper;
 
-public class InputDoubleDialog extends DialogFragment {
+public class InsertDoubleDialog extends DialogFragment {
 
     public static final double DEFAULT_VALUE = 0.0;
 
@@ -28,7 +28,7 @@ public class InputDoubleDialog extends DialogFragment {
     private String message;
     private EditText etDialogTextInput;
     private InputFilterDecimalDigits inputFilter;
-    private InputDoubleDialog.Callback callback;
+    private InsertDoubleDialog.Callback callback;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,9 @@ public class InputDoubleDialog extends DialogFragment {
         }
     }
 
-    public void build(FragmentManager fragmentManager, InputDoubleDialog.Callback callback) {
+    public void build(FragmentManager fragmentManager, InsertDoubleDialog.Callback callback) {
         setCallback(callback);
-        show(fragmentManager, InputDoubleDialog.class.getName());
+        show(fragmentManager, InsertDoubleDialog.class.getName());
     }
 
     private void bindCustomView(Bundle savedInstanceState, AlertDialog.Builder dialog) {

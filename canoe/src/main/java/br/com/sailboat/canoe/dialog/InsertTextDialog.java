@@ -13,21 +13,21 @@ import br.com.sailboat.canoe.R;
 import br.com.sailboat.canoe.base.BaseDialogFragment;
 import br.com.sailboat.canoe.helper.StringHelper;
 
-public class InputTextDialog extends BaseDialogFragment {
+public class InsertTextDialog extends BaseDialogFragment {
 
-    private InputTextDialog.Callback callback;
+    private InsertTextDialog.Callback callback;
 
     private String text;
 
     private EditText etInput;
 
 
-    public static void show(FragmentManager manager, String text, InputTextDialog.Callback callback) {
-        InputTextDialog dialog = new InputTextDialog();
+    public static void show(FragmentManager manager, String text, InsertTextDialog.Callback callback) {
+        InsertTextDialog dialog = new InsertTextDialog();
         dialog.setText(text);
         dialog.setCallback(callback);
 
-        dialog.show(manager, InputTextDialog.class.getCanonicalName());
+        dialog.show(manager, InsertTextDialog.class.getCanonicalName());
     }
 
 
