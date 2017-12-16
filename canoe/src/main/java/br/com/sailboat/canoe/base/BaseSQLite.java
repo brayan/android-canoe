@@ -55,7 +55,18 @@ public abstract class BaseSQLite {
     }
 
     protected int getCountFromQuery(String query) throws SQLiteException {
-        Cursor cursor = performQuery(query);
+        return getCountFromQuery(query, null);
+    }
+
+    protected int getCountFromQuery(String query, BaseFilter filter) throws SQLiteException {
+        Cursor cursor = null;
+
+        if (filter != null && StringHelper.isNotEmpty(filter.getSearchText())) {
+            cursor = performQuery(query, filter);
+        } else {
+            cursor = performQuery(query);
+        }
+
         int count = cursor.getCount();
         cursor.close();
 
@@ -63,7 +74,15 @@ public abstract class BaseSQLite {
     }
 
     protected Cursor performQuery(String query) {
-        return getReadableDatabase().rawQuery(query, null);
+        return performQuery(query, null);
+    }
+
+    protected Cursor performQuery(String query, BaseFilter filter) {
+        if (filter != null && StringHelper.isNotEmpty(filter.getSearchText())) {
+            return getReadableDatabase().rawQuery(query, new String[]{"%" + filter.getSearchText().trim() + "%"});
+        } else {
+            return getReadableDatabase().rawQuery(query, null);
+        }
     }
 
     protected SQLiteStatement compileStatement(String statement) {
@@ -115,11 +134,11 @@ public abstract class BaseSQLite {
         return value ? 1 : 0;
     }
 
-    private SQLiteDatabase getReadableDatabase() {
+    protected SQLiteDatabase getReadableDatabase() {
         return database.getReadableDatabase();
     }
 
-    private SQLiteDatabase getWritableDatabase() {
+    protected SQLiteDatabase getWritableDatabase() {
         return database.getWritableDatabase();
     }
 
