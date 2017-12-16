@@ -7,7 +7,7 @@
     <string name="yesterday">Ontem</string>
     <string name="pattern_month_day_short">dd \'de\' MMM</string>
     <string name="pattern_month_day_long">dd \'de\' MMMM</string>
-    <string name="delete">Deletar</string>
+    <string name="delete">Excluir</string>
     <string name="save">Salvar</string>
     <string name="next_days">Próximos dias</string>
     <string name="cancel">Cancelar</string>
