@@ -1,5 +1,9 @@
 package br.com.sailboat.canoe.helper;
 
+import android.animation.Animator;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.content.Context;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,4 +75,46 @@ public class AnimationHelper {
         a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
     }
+
+    public static void performAnimationBackgroundColor(Context ctx, int colorFrom, int colorTo, int duration, final BackgroundColorCallback callback) {
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        colorAnimation.setDuration(duration);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                callback.onAnimationUpdate(animator);
+            }
+
+        });
+        colorAnimation.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                callback.onAnimationEnd(animation);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        colorAnimation.start();
+    }
+
+
+    public interface BackgroundColorCallback {
+        void onAnimationUpdate(ValueAnimator animator);
+        void onAnimationEnd(Animator animation);
+    }
+
 }
