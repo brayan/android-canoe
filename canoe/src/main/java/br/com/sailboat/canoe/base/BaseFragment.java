@@ -70,6 +70,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         initRecycler();
         initFab();
         initViews();
+        initListeners();
     }
 
     @Override
@@ -370,6 +371,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected abstract T newPresenterInstance();
 
     protected void initViews() {
+    }
+
+    protected void initListeners() {
     }
 
     protected void initEmptyViewMessages() {
