@@ -196,6 +196,10 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
     public void onClickFab() {
     }
 
+    public void onClickToolbar() {
+        view.scrollToTop();
+    }
+
     public boolean isFirstSession() {
         return firstSession;
     }
@@ -238,7 +242,8 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void setTitle(String title);
         void setSubtitle(String subtitle);
         void updateRecyclerItemChanged(int position);
-
+        void scrollToTop();
+        void scrollTo(int position);
     }
 
 

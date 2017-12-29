@@ -30,6 +30,7 @@ import br.com.sailboat.canoe.dialog.ErrorDialog;
 import br.com.sailboat.canoe.dialog.MessageDialog;
 import br.com.sailboat.canoe.dialog.ProgressDialog;
 import br.com.sailboat.canoe.helper.LogHelper;
+import br.com.sailboat.canoe.helper.RecyclerHelper;
 import br.com.sailboat.canoe.helper.StringHelper;
 import br.com.sailboat.canoe.helper.UIHelper;
 
@@ -126,6 +127,30 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void showToast(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void scrollToTop() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (hasLinearLayoutManager()) {
+                    RecyclerHelper.scrollToTop(getLinearLayoutManager());
+                }
+            }
+        });
+    }
+
+    @Override
+    public void scrollTo(final int position) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (hasLinearLayoutManager()) {
+                    RecyclerHelper.scrollPostionToMiddleScreen(getActivity(), getLinearLayoutManager(), position);
+                }
+            }
+        });
     }
 
     @Override
@@ -292,6 +317,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         if (toolbar != null) {
             AppCompatActivity appCompatActivity = ((AppCompatActivity) getActivity());
             appCompatActivity.setSupportActionBar(toolbar);
+
+            toolbar.setOnClickListener(new android.view.View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    presenter.onClickToolbar();
+                }
+            });
+
             onInitToolbar();
         }
     }
@@ -430,4 +463,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     public void setEmptyViewMessage2(String emptyViewMessage2) {
         this.emptyViewMessage2 = emptyViewMessage2;
     }
+
+    public boolean hasLinearLayoutManager() {
+        return recycler != null && recycler.getLayoutManager() instanceof LinearLayoutManager;
+    }
+
+    public LinearLayoutManager getLinearLayoutManager() {
+        return (LinearLayoutManager) recycler.getLayoutManager();
+    }
+
 }
