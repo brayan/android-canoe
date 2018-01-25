@@ -155,20 +155,26 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void closeActivityWithResultOk() {
-        getActivity().setResult(Activity.RESULT_OK);
-        getActivity().finish();
+        if (getActivity() != null) {
+            getActivity().setResult(Activity.RESULT_OK);
+            getActivity().finish();
+        }
     }
 
     @Override
     public void closeActivityWithResultOk(Intent intent) {
-        getActivity().setResult(Activity.RESULT_OK, intent);
-        getActivity().finish();
+        if (getActivity() != null) {
+            getActivity().setResult(Activity.RESULT_OK, intent);
+            getActivity().finish();
+        }
     }
 
     @Override
     public void closeActivityWithResultCanceled() {
-        getActivity().setResult(Activity.RESULT_CANCELED);
-        getActivity().finish();
+        if (getActivity() != null) {
+            getActivity().setResult(Activity.RESULT_CANCELED);
+            getActivity().finish();
+        }
     }
 
     @Override
@@ -227,6 +233,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void updateMenus() {
         getActivity().invalidateOptionsMenu();
+    }
+
+    @Override
+    public void runOnUi(Runnable runnable) {
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(runnable);
+        }
     }
 
     private void restoreViewModel(Bundle savedInstanceState) {

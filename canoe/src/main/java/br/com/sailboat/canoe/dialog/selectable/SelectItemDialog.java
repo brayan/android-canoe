@@ -42,7 +42,7 @@ public class SelectItemDialog extends BaseDialogFragment implements SelectableIt
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.dlg_select_item, null);
+        View view = View.inflate(getActivity(), R.layout.dlg_reycler, null);
         initViews(view);
         updateViews();
         return buildDialog(view);
@@ -55,7 +55,7 @@ public class SelectItemDialog extends BaseDialogFragment implements SelectableIt
     }
 
     private void initViews(View view) {
-        tvTitle = (TextView) view.findViewById(R.id.dlg_select_item__tv__title);
+        tvTitle = (TextView) view.findViewById(R.id.dlg_recycler__tv__title);
 
         recycler = (RecyclerView) view.findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));

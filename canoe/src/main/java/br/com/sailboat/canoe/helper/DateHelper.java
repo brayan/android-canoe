@@ -73,13 +73,10 @@ public class DateHelper {
 
     public static String getFullDateName(Context ctx, Calendar calendar) {
         if (isToday(calendar)) {
-            return ctx.getString(R.string.today) + ", " + getMonthAndDayLong(ctx, calendar);
+            return ctx.getString(R.string.today) + ", " + DateFormat.getLongDateFormat(ctx).format(calendar.getTime());
 
         } else if (isTomorrow(calendar)) {
-            return ctx.getString(R.string.tomorrow) + ", " + getMonthAndDayLong(ctx, calendar);
-
-        } else if (isCurrentYear(calendar)) {
-            return getDayName(calendar) + ", " + getMonthAndDayLong(ctx, calendar);
+            return ctx.getString(R.string.tomorrow) + ", " + DateFormat.getLongDateFormat(ctx).format(calendar.getTime());
 
         } else {
             return getDayName(calendar) + ", " + DateFormat.getLongDateFormat(ctx).format(calendar.getTime());
@@ -247,6 +244,5 @@ public class DateHelper {
         calendar.set(Calendar.SECOND, 59);
         calendar.set(Calendar.MILLISECOND, 0);
     }
-
 
 }

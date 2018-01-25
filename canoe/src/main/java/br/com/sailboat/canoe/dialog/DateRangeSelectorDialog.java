@@ -102,12 +102,12 @@ public class DateRangeSelectorDialog extends BaseDialogFragment {
                         DateHelper.setFinalTimeToCalendar(newFinalDate);
 
                         if (DateHelper.isAfterToday(newFinalDate)) {
-                            MessageDialog.showMessage(getFragmentManager(), "A data não pode ser maior que hoje", "Ops...");
+                            MessageDialog.showMessage(getFragmentManager(), getString(R.string.msg_data_cant_be_greater), "Ops...");
                             return;
                         }
 
                         if (newFinalDate.before(initialDate)) {
-                            MessageDialog.showMessage(getFragmentManager(), "A data final não pode ser menor que a data inicial", "Ops...");
+                            MessageDialog.showMessage(getFragmentManager(), getString(R.string.msg_end_date), "Ops...");
                             return;
                         }
 

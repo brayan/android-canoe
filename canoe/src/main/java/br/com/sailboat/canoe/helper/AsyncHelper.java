@@ -2,22 +2,12 @@ package br.com.sailboat.canoe.helper;
 
 import android.os.AsyncTask;
 
-import java.util.concurrent.Executor;
-
 public class AsyncHelper extends AsyncTask<Void, Void, Exception> {
 
     private AsyncHelper.Callback callback;
 
-    public static AsyncTask execute(Executor executor, AsyncHelper.Callback callback) {
-        if (executor != null) {
-            return new AsyncHelper(callback).executeOnExecutor(executor);
-        } else {
-            return execute(callback);
-        }
-    }
-
     public static AsyncTask execute(AsyncHelper.Callback callback) {
-        return new AsyncHelper(callback).execute();
+        return new AsyncHelper(callback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private AsyncHelper(AsyncHelper.Callback callback) {
@@ -26,20 +16,26 @@ public class AsyncHelper extends AsyncTask<Void, Void, Exception> {
 
     @Override
     protected Exception doInBackground(Void... voids) {
-        try {
-            callback.doInBackground();
-            return null;
-        } catch (Exception e) {
-            return e;
+        if (!isCancelled()) {
+            try {
+                callback.doInBackground();
+                return null;
+            } catch (Exception e) {
+                return e;
+            }
         }
+
+        return null;
     }
 
     @Override
     protected void onPostExecute(Exception e) {
-        if (e == null) {
-            callback.onSuccess();
-        } else {
-            callback.onFail(e);
+        if (!isCancelled()) {
+            if (e == null) {
+                callback.onSuccess();
+            } else {
+                callback.onFail(e);
+            }
         }
     }
 

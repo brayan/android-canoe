@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,13 +16,14 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_small"
         android:textStyle="bold"
-        tools:background="@color/md_blue_500"/>
+        tools:background="@color/md_blue_500" />
 
     <LinearLayout
         android:id="@+id/dlg_date_range_selector__ll__initial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
+        android:minHeight="52dp"
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="16dp"
@@ -32,7 +32,7 @@
 
         <TextView
             style="@style/TextViewLabel"
-            android:text="@string/initial_date"/>
+            android:text="@string/initial_date" />
 
         <TextView
             android:id="@+id/dlg_date_range_selector__tv__initial"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/md_blue_grey_500"
             android:textSize="@dimen/text_size_small"
-            tools:text="11/07/2017"/>
+            tools:text="11/07/2017" />
 
     </LinearLayout>
 
@@ -49,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
+        android:minHeight="52dp"
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="16dp"
@@ -57,7 +58,7 @@
 
         <TextView
             style="@style/TextViewLabel"
-            android:text="@string/final_date"/>
+            android:text="@string/final_date" />
 
         <TextView
             android:id="@+id/dlg_date_range_selector__tv__final"
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/md_blue_grey_500"
             android:textSize="@dimen/text_size_small"
-            tools:text="11/08/2017"/>
+            tools:text="11/08/2017" />
 
     </LinearLayout>
 

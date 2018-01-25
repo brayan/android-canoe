@@ -166,7 +166,6 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         view.updateMenus();
     }
 
-
     public T getView() {
         return view;
     }
@@ -217,6 +216,8 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
     }
 
 
+
+
     public interface View {
         Context getContext();
         void closeKeyboard();
@@ -244,6 +245,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void updateRecyclerItemChanged(int position);
         void scrollToTop();
         void scrollTo(int position);
+        void runOnUi(Runnable runnable);
     }
 
 
