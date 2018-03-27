@@ -81,4 +81,15 @@
     <string name="label_status">Status</string>
     <string name="label_date_time">Data/Hora</string>
     <string name="restore">Restaurar</string>
+    <string name="label_name">Nome</string>
+    <string name="label_quantity">Quantidade</string>
+    <string name="hint_enter_product_name">Insira o nome do produto</string>
+    <string name="hint_enter_current_quantity">Insira a quantidade atual</string>
+    <string name="msg_exception_start_editing">Não foi possível iniciar a edição. Por favor, tente novamente</string>
+    <string name="title_edit_product">Editar Produto</string>
+    <string name="title_new_product">Novo Produto</string>
+    <string name="msg_exception_saving">Não foi possível salvar. Por favor, tente novamente</string>
+    <string name="product_added">Produto adicionado!</string>
+    <string name="exception_product_name">É necessário inserir o nome do produto</string>
+    <string name="exception_product_quantity">É necessário inserir a quantidade do produto</string>
 </resources>

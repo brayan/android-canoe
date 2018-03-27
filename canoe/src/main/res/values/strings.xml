@@ -80,4 +80,15 @@
     <string name="label_status">Status</string>
     <string name="label_date_time">Date/Time</string>
     <string name="restore">Restore</string>
+    <string name="label_name">Name</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="hint_enter_product_name">Enter the product name</string>
+    <string name="hint_enter_current_quantity">Enter the current quantity</string>
+    <string name="msg_exception_start_editing">An error occurred when start editing. Try again</string>
+    <string name="title_edit_product">Edit Product</string>
+    <string name="title_new_product">New Product</string>
+    <string name="msg_exception_saving">An error occurred while saving. Please, try again</string>
+    <string name="product_added">Product added!</string>
+    <string name="exception_product_name">You must enter a product name</string>
+    <string name="exception_product_quantity">You must enter the quantity</string>
 </resources>

@@ -246,6 +246,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         void scrollToTop();
         void scrollTo(int position);
         void runOnUi(Runnable runnable);
+        void showSnackbar(String msg, int duration);
     }
 
 

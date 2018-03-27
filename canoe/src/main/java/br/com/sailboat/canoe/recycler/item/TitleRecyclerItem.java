@@ -1,13 +1,12 @@
 package br.com.sailboat.canoe.recycler.item;
 
-import br.com.sailboat.canoe.helper.EntityHelper;
 import br.com.sailboat.canoe.recycler.RecyclerItem;
 
 public class TitleRecyclerItem implements RecyclerItem {
 
     private int viewType;
     private String title;
-    private int color = EntityHelper.NO_ID;
+    private int color = -1;
 
     private TitleRecyclerItem() {
     }
